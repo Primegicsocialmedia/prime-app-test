@@ -1,0 +1,64 @@
+1.  npx create-expo-app@latest ./ --template blank
+
+2.  npx expo install expo-router react-native-safe-area-context 
+react-native-screens expo-linking expo-constants expo-status-bar expo-font
+
+3.  package.json
+    change "main"
+    "expo-router/entry"
+
+4.  add scheme to app.json file
+    "scheme": "prime-app", 
+
+5.  npx expo start -c  (Run app)     
+
+6.  create app folder and create two files 
+    _layout.jsx and index.jsx
+    move the files from App.js to _layout.jsx and delete App.js file
+
+7.  use <Stack> and <Link> to link initial pages import these..
+
+8.  install nativwind
+
+    npx expo install nativewind tailwindcss react-native-reanimated react-native-safe-area-context
+
+    npx tailwindcss init
+ 
+        Update tailwind config
+
+  // NOTE: Update this to include the paths to all of your component files.
+  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")],
+ 
+
+    Create a CSS file and add the Tailwind directives
+
+        global.css
+
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+
+        add to babel
+
+           presets: [
+        ["babel-preset-expo", { jsxImportSource: "nativewind" }],
+        "nativewind/babel",
+        ],
+
+        create metro file
+
+        npx expo customize metro.config.js
+
+        import "../global.css" in your Root layout file
+
+
+        modify app.json file 
+        {
+        "expo": {
+            "web": {
+            "bundler": "metro"
+            }
+        }
+        }
